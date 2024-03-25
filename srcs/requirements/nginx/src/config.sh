@@ -1,4 +1,6 @@
 #!bin/bash
 
-sudo apt update && sudo apt upgrade
-sudo apt install nginx
+apt update && apt upgrade -y
+apt install nginx -y 
+mv etc/nginx/nginx.conf etc/nginx/nginx.conf_backup
+mv nginx.conf etc/nginx/.
