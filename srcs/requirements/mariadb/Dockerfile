@@ -2,6 +2,10 @@ FROM debian:11
 
 LABEL This is the MariaDB image
 
-COPY src/config.sh . 
+COPY src/config.sh .
+COPY src/50-server.cnf .
 
-RUN  bash config.sh
+RUN /bin/bash config.sh
+
+RUN rm /config.sh
+RUN rm /50-server.cnf

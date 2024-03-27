@@ -12,4 +12,6 @@ RUN bash config.sh
 
 ENTRYPOINT ["/bin/bash"]
 
-# EXPOSE 443 
+# CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE 443
