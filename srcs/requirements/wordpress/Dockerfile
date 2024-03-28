@@ -6,5 +6,3 @@ COPY src/config.sh .
 
 RUN bash config.sh
 
-
-ENTRYPOINT ["/bin/bash"]

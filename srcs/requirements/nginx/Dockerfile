@@ -10,8 +10,8 @@ COPY src/nginx.conf .
 
 RUN bash config.sh
 
-ENTRYPOINT ["/bin/bash"]
-
-# CMD ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]

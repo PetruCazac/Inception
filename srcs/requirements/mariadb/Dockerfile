@@ -8,4 +8,8 @@ COPY src/50-server.cnf .
 RUN /bin/bash config.sh
 
 RUN rm /config.sh
-RUN rm /50-server.cnf
+
+# ENTRYPOINT ["/bin/bash"]
+
+# CMD ["exec", "mysqld_safe"]
+
