@@ -20,13 +20,13 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+define( 'DB_NAME', getenv('DATABASE_NAME'));
 
 /** Database username */
-define( 'DB_USER', 'username_here' );
+define( 'DB_USER', getenv('DATABASE_USER') );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', getenv('DATABASE_PASSWORD') );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -88,8 +88,8 @@ define( 'WP_DEBUG', false );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-        define( 'ABSPATH', __DIR__ . '/' );
+if ( ! defined( '/var/wordpress' ) ) {
+        define( '/var/wordpress', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

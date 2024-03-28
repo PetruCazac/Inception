@@ -10,8 +10,8 @@ sleep 1
 
 
 mysql -e "CREATE DATABASE ${DATABASE_NAME};"
-mysql -e "CREATE USER ${USER}@'localhost' IDENTIFIED BY ${PASSWORD};"
-mysql -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO ${USER}@'localhost';"
+mysql -e "CREATE USER ${DATABASE_USER}@'localhost' IDENTIFIED BY ${DATABASE_PASSWORD};"
+mysql -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO ${DATABASE_USER}@'localhost';"
 mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DATABASE_ROOT_PASSWORD}';"
 mysql -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p $DATABASE_ROOT_PASSWORD shutdown
