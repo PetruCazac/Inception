@@ -88,8 +88,8 @@ define( 'WP_DEBUG', false );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( '/var/wordpress' ) ) {
-        define( '/var/wordpress', __DIR__ . '/' );
+if ( ! defined( '/var/www/html' ) ) {
+        define( '/var/www/html', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

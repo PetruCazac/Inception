@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 services:
   nginx:
@@ -6,8 +6,9 @@ services:
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
-    depends_on:
+    depends_on: 
       - wordpress
+        # condition: service_healthy
     env_file: .env
     networks:
       - common
@@ -34,6 +35,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mariadb
+        # condition: service_healthy
     env_file: .env
     volumes:
       - WordPress:/var/www/html/
@@ -52,11 +54,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/pcazac/Documents/12.Inception/srcs/requirements/mariadb
+      device: /home/pcazac/Desktop/Programming/12.Inception/srcs/requirements/mariadb
 
   WordPress:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /Users/pcazac/Documents/12.Inception/srcs/requirements/wordpress
+      device: /home/pcazac/Desktop/Programming/12.Inception/srcs/requirements/wordpress

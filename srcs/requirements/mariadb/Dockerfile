@@ -11,5 +11,5 @@ RUN rm /config.sh
 
 # ENTRYPOINT ["/bin/bash"]
 
-# CMD ["exec", "mysqld_safe"]
-
+CMD ["mysqld_safe"]
+RUN 
