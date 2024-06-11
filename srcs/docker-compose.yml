@@ -4,12 +4,15 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: requirements/nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     depends_on: 
       - wordpress
         # condition: service_healthy
-    env_file: .env
+    env_file:
+      - .env
+    volumes:
+      - WordPress:/var/www/wordpress/
     networks:
       - common
     ports:
@@ -18,31 +21,32 @@ services:
   mariadb:
     container_name: mariadb
     build:
-      context: requirements/mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     volumes:
       - DB:/var/lib/mysql
-    env_file: .env
+    env_file:
+      - .env
     networks:
       - common
-    expose:
-      - "3306"
+    ports:
+      - 3306:3306
 
   wordpress:
     container_name: wordpress
     build:
-      context: requirements/wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
     depends_on:
       - mariadb
-        # condition: service_healthy
-    env_file: .env
+    env_file:
+      - .env
     volumes:
-      - WordPress:/var/www/html/
+      - WordPress:/var/www/wordpress/
     networks:
       - common
-    expose:
-      - "9000"
+    ports:
+      - 9000:9000
 
 networks:
   common:
@@ -54,11 +58,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/pcazac/Desktop/Programming/12.Inception/srcs/requirements/mariadb
+      device: /home/pcazac/data/files_db
 
   WordPress:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/pcazac/Desktop/Programming/12.Inception/srcs/requirements/wordpress
+      device: /home/pcazac/data/files_wordpress

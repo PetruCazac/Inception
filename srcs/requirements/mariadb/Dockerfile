@@ -2,14 +2,18 @@ FROM debian:11
 
 LABEL This is the MariaDB image
 
-COPY src/config.sh .
-COPY src/50-server.cnf .
+RUN apt update && apt upgrade -y
+RUN apt install mariadb-server -y
+RUN apt install iputils-ping -y
 
-RUN /bin/bash config.sh
+COPY ./src/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./src/config.sh .
+COPY .env .
 
-RUN rm /config.sh
+RUN . /.env
 
-# ENTRYPOINT ["/bin/bash"]
+RUN chmod +x config.sh
 
-CMD ["mysqld_safe"]
-RUN 
+EXPOSE 3306
+
+CMD ["./config.sh"]

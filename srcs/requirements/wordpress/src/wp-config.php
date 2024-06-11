@@ -29,7 +29,7 @@ define( 'DB_USER', getenv('DATABASE_USER') );
 define( 'DB_PASSWORD', getenv('DATABASE_PASSWORD') );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -88,8 +88,8 @@ define( 'WP_DEBUG', false );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( '/var/www/html' ) ) {
-        define( '/var/www/html', __DIR__ . '/' );
+if ( ! defined( '/var/www/wordpress' ) ) {
+        define( '/var/www/wordpress', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

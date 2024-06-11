@@ -8,10 +8,10 @@ LABEL This is the nginx container
 COPY src/config.sh  .
 COPY src/nginx.conf .
 
-RUN bash config.sh
+RUN chmod +x config.sh
 
 # ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["./config.sh"]
