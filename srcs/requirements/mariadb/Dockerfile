@@ -8,9 +8,6 @@ RUN apt install iputils-ping -y
 
 COPY ./src/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./src/config.sh .
-COPY .env .
-
-RUN . /.env
 
 RUN chmod +x config.sh
 
