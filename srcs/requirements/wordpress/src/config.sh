@@ -1,6 +1,5 @@
 #!/bin/bash
-# set -e
-#
+
 apt update && apt upgrade -y
 apt install curl -y
 apt install wget -y
@@ -17,6 +16,7 @@ apt install mariadb-client -y
 apt install vim -y
 
 mkdir -p ${WP_PATH}
+chown -R www-data:www-data /var/www
 
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar

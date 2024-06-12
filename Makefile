@@ -3,8 +3,6 @@ NAME = build
 all: $(NAME)
 
 $(NAME):
-	cp srcs/.env srcs/requirements/mariadb/.
-	cp srcs/.env srcs/requirements/wordpress/.
 	sudo docker compose -f ./srcs/docker-compose.yml up --build -d
 
 cstatus:
@@ -52,16 +50,12 @@ vclean:
 
 clean: stop cclean iclean nclean vclean
 
-re: clean remove_env all
+re: clean all
 
-terminate: remove_env remove-local-storage
-
-remove_env:
-	rm -f srcs/requirements/mariadb/.env
-	rm -f srcs/requirements/wordpress/.env
+terminate: remove-local-storage
 
 remove-local-storage:
 	sudo rm -rf ../data/files_wordpress/*
 	sudo rm -rf ../data/files_db/*
 
-.PHONY: all stop cclean iclean nclean vclean clean remove-local-storage remove_env terminate
+.PHONY: all stop cclean iclean nclean vclean clean remove-local-storage terminate

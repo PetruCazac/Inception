@@ -8,13 +8,12 @@ services:
       dockerfile: Dockerfile
     depends_on: 
       - wordpress
-        # condition: service_healthy
     env_file:
       - .env
     volumes:
       - WordPress:/var/www/wordpress/
     networks:
-      - common
+      - inceptionNetwork
     ports:
       - "443:443"
 
@@ -28,9 +27,9 @@ services:
     env_file:
       - .env
     networks:
-      - common
-    ports:
-      - 3306:3306
+      - inceptionNetwork
+    expose:
+      - "3306"
 
   wordpress:
     container_name: wordpress
@@ -44,12 +43,12 @@ services:
     volumes:
       - WordPress:/var/www/wordpress/
     networks:
-      - common
-    ports:
-      - 9000:9000
+      - inceptionNetwork
+    expose:
+      - "9000"
 
 networks:
-  common:
+  inceptionNetwork:
     driver: bridge
 
 volumes:
